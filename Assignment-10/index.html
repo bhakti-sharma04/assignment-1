@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 10 - Class Components</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { Component } = React;
+
+    class Counter extends Component {
+      constructor() {
+        super();
+        this.state = { count: 0 };
+      }
+
+      increment = () => {
+        this.setState({ count: this.state.count + 1 });
+      };
+
+      render() {
+        return (
+          <div style={{ border: '1px solid gray', padding: '15px', width: '250px', margin: '15px auto', textAlign: 'center' }}>
+            <h3>Counter</h3>
+            <p>Count: {this.state.count}</p>
+            <button onClick={this.increment}>Increment</button>
+          </div>
+        );
+      }
+    }
+
+    class UserProfile extends Component {
+      render() {
+        return (
+          <div style={{ border: '1px solid gray', padding: '15px', width: '250px', margin: '15px auto' }}>
+            <h3>User Profile</h3>
+            <p><b>Username:</b> {this.props.username}</p>
+            <p><b>Email:</b> {this.props.email}</p>
+            <p><b>Role:</b> {this.props.isAdmin ? "Role: Administrator" : "Role: User"}</p>
+          </div>
+        );
+      }
+    }
+
+    class App extends Component {
+      render() {
+        return (
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <h2 style={{ textAlign: 'center' }}>Assignment 10 - Class Components</h2>
+            <Counter />
+            <UserProfile username="bhakti" email="bhakti@gmail.com" isAdmin={true} />
+            <UserProfile username="rahul" email="rahul@gmail.com" isAdmin={false} />
+          </div>
+        );
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

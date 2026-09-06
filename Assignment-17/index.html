@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 17 - Toggle & Counter</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ToggleButton() {
+      const [isOn, setIsOn] = useState(false);
+
+      return (
+        <div style={{ border: '1px solid gray', padding: '15px', width: '250px', margin: '15px auto', textAlign: 'center' }}>
+          <h3>1. Toggle Button</h3>
+          <p>Current State: <b>{isOn ? "ON" : "OFF"}</b></p>
+          <button
+            onClick={() => setIsOn(!isOn)}
+            style={{
+              padding: '8px 20px',
+              backgroundColor: isOn ? 'green' : 'red',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            {isOn ? "Turn OFF" : "Turn ON"}
+          </button>
+        </div>
+      );
+    }
+
+    function CounterWithMultiples() {
+      const [count, setCount] = useState(0);
+
+      return (
+        <div style={{ border: '1px solid gray', padding: '15px', width: '300px', margin: '15px auto', textAlign: 'center' }}>
+          <h3>2. Simple Counter</h3>
+          <h2>{count}</h2>
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button onClick={() => setCount(count + 1)}>Increment (+1)</button>
+            <button onClick={() => setCount(count - 1)}>Decrement (-1)</button>
+            <button onClick={() => setCount(count * 5)}>Multiples (×5)</button>
+            <button onClick={() => setCount(0)}>Reset</button>
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div style={{ fontFamily: 'sans-serif', textAlign: 'center', marginTop: '30px' }}>
+          <h2>Assignment 17 - useState Hook</h2>
+          <ToggleButton />
+          <CounterWithMultiples />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

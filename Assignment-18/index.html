@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 18 - Todo and Weather</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function TodoList() {
+      const [tasks, setTasks] = useState(["Study React", "Complete Assignment"]);
+      const [input, setInput] = useState('');
+
+      const addTask = () => {
+        if (input.trim() === '') return;
+        setTasks([...tasks, input]);
+        setInput('');
+      };
+
+      const removeTask = (indexToRemove) => {
+        setTasks(tasks.filter((_, index) => index !== indexToRemove));
+      };
+
+      return (
+        <div style={{ border: '1px solid #ccc', padding: '15px', width: '300px', margin: '20px auto' }}>
+          <h3>1. Simple To-Do List</h3>
+          <input
+            type="text"
+            placeholder="Enter task"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button onClick={addTask} style={{ marginLeft: '5px' }}>Add</button>
+
+          <ul style={{ paddingLeft: '20px', marginTop: '15px' }}>
+            {tasks.map((task, i) => (
+              <li key={i} style={{ marginBottom: '8px' }}>
+                {task}
+                <button onClick={() => removeTask(i)} style={{ marginLeft: '10px', color: 'red' }}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    function WeatherApp() {
+      const [weather, setWeather] = useState(null);
+
+      useEffect(() => {
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=19.07&longitude=72.87&current_weather=true')
+          .then(res => res.json())
+          .then(data => setWeather(data.current_weather))
+          .catch(err => console.log(err));
+      }, []);
+
+      return (
+        <div style={{ border: '1px solid #007bff', padding: '15px', width: '300px', margin: '20px auto', textAlign: 'center', background: '#eef7ff' }}>
+          <h3>2. Weather Data</h3>
+          <p><b>City:</b> Mumbai</p>
+          {weather ? (
+            <div>
+              <h2>{weather.temperature}°C</h2>
+              <p>Wind Speed: {weather.windspeed} km/h</p>
+            </div>
+          ) : (
+            <p>Loading weather...</p>
+          )}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div style={{ fontFamily: 'sans-serif' }}>
+          <h2 style={{ textAlign: 'center' }}>Assignment 18 - Hooks (useState & useEffect)</h2>
+          <TodoList />
+          <WeatherApp />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

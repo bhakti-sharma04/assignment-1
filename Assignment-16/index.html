@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 16 - Forms</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useRef } = React;
+
+    function SignupControlled() {
+      const [username, setUsername] = useState('');
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [msg, setMsg] = useState('');
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setMsg("User registered: " + username);
+      };
+
+      return (
+        <div style={{ border: '1px solid #ccc', padding: '15px', width: '260px', margin: '10px' }}>
+          <h3>1. Signup (Controlled)</h3>
+          <form onSubmit={handleSubmit}>
+            <label>Username:</label><br />
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required /><br /><br />
+            <label>Email:</label><br />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /><br /><br />
+            <label>Password:</label><br />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required /><br /><br />
+            <button type="submit">Sign Up</button>
+          </form>
+          {msg && <p style={{ color: 'green' }}>{msg}</p>}
+        </div>
+      );
+    }
+
+    function LoginUncontrolled() {
+      const usernameRef = useRef();
+      const passwordRef = useRef();
+      const [msg, setMsg] = useState('');
+
+      const handleLogin = (e) => {
+        e.preventDefault();
+        const user = usernameRef.current.value;
+        setMsg("Logged in as: " + user);
+      };
+
+      return (
+        <div style={{ border: '1px solid #ccc', padding: '15px', width: '260px', margin: '10px' }}>
+          <h3>2. Login (Uncontrolled)</h3>
+          <form onSubmit={handleLogin}>
+            <label>Username:</label><br />
+            <input type="text" ref={usernameRef} required /><br /><br />
+            <label>Password:</label><br />
+            <input type="password" ref={passwordRef} required /><br /><br />
+            <button type="submit">Login</button>
+          </form>
+          {msg && <p style={{ color: 'blue' }}>{msg}</p>}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div style={{ fontFamily: 'sans-serif', padding: '20px' }}>
+          <h2>Assignment 16 - Controlled vs Uncontrolled Forms</h2>
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <SignupControlled />
+            <LoginUncontrolled />
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

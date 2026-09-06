@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 13 - Simple Calculator</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Calculator() {
+      const [num1, setNum1] = useState('');
+      const [num2, setNum2] = useState('');
+      const [result, setResult] = useState(0);
+
+      const handleAdd = () => setResult(Number(num1) + Number(num2));
+      const handleSub = () => setResult(Number(num1) - Number(num2));
+      const handleMul = () => setResult(Number(num1) * Number(num2));
+      const handleDiv = () => setResult(Number(num2) !== 0 ? Number(num1) / Number(num2) : 'Error');
+      const handleSquare = () => setResult(Number(num1) * Number(num1));
+      const handleClear = () => { setNum1(''); setNum2(''); setResult(0); };
+
+      return (
+        <div style={{ border: '1px solid #333', padding: '20px', width: '280px', margin: '20px auto', textAlign: 'center', fontFamily: 'sans-serif' }}>
+          <h3>Simple Calculator</h3>
+          <input
+            type="number"
+            placeholder="First Number"
+            value={num1}
+            onChange={(e) => setNum1(e.target.value)}
+            style={{ width: '90%', padding: '6px', marginBottom: '8px' }}
+          />
+          <input
+            type="number"
+            placeholder="Second Number"
+            value={num2}
+            onChange={(e) => setNum2(e.target.value)}
+            style={{ width: '90%', padding: '6px', marginBottom: '12px' }}
+          />
+          <br />
+          <div style={{ display: 'flex', gap: '5px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button onClick={handleAdd} style={{ padding: '6px 12px' }}>+</button>
+            <button onClick={handleSub} style={{ padding: '6px 12px' }}>-</button>
+            <button onClick={handleMul} style={{ padding: '6px 12px' }}>×</button>
+            <button onClick={handleDiv} style={{ padding: '6px 12px' }}>÷</button>
+            <button onClick={handleSquare} style={{ padding: '6px 12px' }}>x² (Num1)</button>
+            <button onClick={handleClear} style={{ padding: '6px 12px' }}>Clear</button>
+          </div>
+          <h4 style={{ marginTop: '15px' }}>Result: {result}</h4>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <h2 style={{ textAlign: 'center', fontFamily: 'sans-serif' }}>Assignment 13 - React Calculator</h2>
+          <Calculator />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

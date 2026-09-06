@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 14 - Simple Navbar & Routing</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const [page, setPage] = useState('home');
+      const [count, setCount] = useState(0);
+      const [cNum1, setCNum1] = useState(0);
+      const [cNum2, setCNum2] = useState(0);
+      const [cRes, setCRes] = useState(0);
+
+      return (
+        <div>
+          <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <div className="container">
+              <span className="navbar-brand">My React Portal</span>
+              <div className="navbar-nav">
+                <button className="nav-link btn btn-link text-white" onClick={() => setPage('home')}>Homepage</button>
+                <button className="nav-link btn btn-link text-white" onClick={() => setPage('about')}>About</button>
+                <button className="nav-link btn btn-link text-white" onClick={() => setPage('calculator')}>Calculator</button>
+                <button className="nav-link btn btn-link text-white" onClick={() => setPage('counter')}>Counter</button>
+                <button className="nav-link btn btn-link text-white" onClick={() => setPage('tables')}>Tables</button>
+              </div>
+            </div>
+          </nav>
+
+          <div className="container my-4">
+            {page === 'home' && (
+              <div>
+                <div className="bg-primary text-white text-center p-4 rounded mb-4">
+                  <h2>Welcome to Homepage Slider</h2>
+                  <p>Simple Bootstrap banner slider demonstration.</p>
+                </div>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <div className="card p-3">
+                      <h4>Section 1</h4>
+                      <p>Basic homepage section using Bootstrap grid.</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <div className="card p-3">
+                      <h4>Section 2</h4>
+                      <p>Use the links in the top navbar to see each component.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {page === 'about' && (
+              <div className="card p-4">
+                <h3>About Page</h3>
+                <p>This is Assignment 14 with simple navigation.</p>
+              </div>
+            )}
+
+            {page === 'calculator' && (
+              <div className="card p-4" style={{ maxWidth: '350px', margin: '0 auto' }}>
+                <h3>Calculator</h3>
+                <input type="number" placeholder="Num 1" onChange={(e) => setCNum1(Number(e.target.value))} className="form-control mb-2" />
+                <input type="number" placeholder="Num 2" onChange={(e) => setCNum2(Number(e.target.value))} className="form-control mb-2" />
+                <button className="btn btn-primary mb-2" onClick={() => setCRes(cNum1 + cNum2)}>Add Numbers</button>
+                <h5>Result: {cRes}</h5>
+              </div>
+            )}
+
+            {page === 'counter' && (
+              <div className="card p-4 text-center" style={{ maxWidth: '300px', margin: '0 auto' }}>
+                <h3>Counter</h3>
+                <h2>{count}</h2>
+                <div>
+                  <button className="btn btn-success me-2" onClick={() => setCount(count + 1)}>Increment</button>
+                  <button className="btn btn-danger" onClick={() => setCount(count - 1)}>Decrement</button>
+                </div>
+              </div>
+            )}
+
+            {page === 'tables' && (
+              <div className="card p-3">
+                <h3>Student Table</h3>
+                <table className="table table-bordered">
+                  <thead>
+                    <tr><th>Roll No</th><th>Name</th><th>Marks</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Bhakti</td><td>90</td></tr>
+                    <tr><td>2</td><td>Rahul</td><td>85</td></tr>
+                    <tr><td>3</td><td>Priya</td><td>80</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

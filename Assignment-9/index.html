@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 9 - Simple Contact Form</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ContactForm() {
+      const [name, setName] = useState('');
+      const [email, setEmail] = useState('');
+      const [mobile, setMobile] = useState('');
+      const [address, setAddress] = useState('');
+      const [submitted, setSubmitted] = useState(false);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+      };
+
+      return (
+        <div style={{ border: '1px solid #ccc', padding: '20px', width: '300px', margin: '30px auto', fontFamily: 'sans-serif' }}>
+          <h3>Contact Form</h3>
+          <form onSubmit={handleSubmit}>
+            <div style={{ marginBottom: '8px' }}>
+              <label>Name:</label><br />
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%' }} />
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <label>Email:</label><br />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: '100%' }} />
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <label>Mobile:</label><br />
+              <input type="text" value={mobile} onChange={(e) => setMobile(e.target.value)} required style={{ width: '100%' }} />
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <label>Address:</label><br />
+              <textarea value={address} onChange={(e) => setAddress(e.target.value)} required style={{ width: '100%' }} />
+            </div>
+            <button type="submit" style={{ padding: '5px 15px' }}>Submit</button>
+          </form>
+
+          {submitted && (
+            <div style={{ marginTop: '15px', background: '#eef', padding: '10px' }}>
+              <h4>Submitted Details:</h4>
+              <p><b>Name:</b> {name}</p>
+              <p><b>Email:</b> {email}</p>
+              <p><b>Mobile:</b> {mobile}</p>
+              <p><b>Address:</b> {address}</p>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <h2 style={{ textAlign: 'center', fontFamily: 'sans-serif' }}>React Assignment 9</h2>
+          <ContactForm />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

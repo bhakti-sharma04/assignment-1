@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 20px;
+}
+
+/* ID Selector */
+#header {
+  background-color: #0066cc;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+#my-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #0066cc;
+}
+
+#edu-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#edu-table th, #edu-table td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+#edu-table th {
+  background-color: #ddd;
+}
+
+/* Class Selector */
+.profile-box {
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 450px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.name-text {
+  color: #333;
+  margin: 10px 0 5px 0;
+}
+
+.role-text {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.info-section {
+  text-align: left;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}

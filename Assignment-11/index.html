@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 11 - Lifecycle Methods</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { Component } = React;
+
+    class LoadingComponent extends Component {
+      constructor() {
+        super();
+        this.state = { loading: true };
+      }
+
+      componentDidMount() {
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 3000);
+      }
+
+      render() {
+        if (this.state.loading) {
+          return <h3>Loading... please wait 3 seconds</h3>;
+        }
+        return (
+          <div style={{ border: '1px solid green', padding: '10px' }}>
+            <h3>Component Loaded Successfully!</h3>
+            <p>This whole component appeared after 3 seconds.</p>
+          </div>
+        );
+      }
+    }
+
+    class UnmountableComponent extends Component {
+      componentWillUnmount() {
+        alert("Bye");
+      }
+
+      render() {
+        return (
+          <div style={{ border: '1px solid red', padding: '10px', marginTop: '10px' }}>
+            <p>This is the child component. Click unmount to remove me.</p>
+          </div>
+        );
+      }
+    }
+
+    class App extends Component {
+      constructor() {
+        super();
+        this.state = { showChild: true };
+      }
+
+      toggleChild = () => {
+        this.setState({ showChild: !this.state.showChild });
+      };
+
+      render() {
+        return (
+          <div style={{ fontFamily: 'sans-serif', width: '380px', margin: '20px auto' }}>
+            <h2>Assignment 11 - Lifecycle Methods</h2>
+            <h4>Part 1: 3 Second Loading</h4>
+            <LoadingComponent />
+            <hr />
+            <h4>Part 2: Unmount Component</h4>
+            {this.state.showChild && <UnmountableComponent />}
+            <br />
+            <button onClick={this.toggleChild}>
+              {this.state.showChild ? "Unmount Child" : "Mount Child"}
+            </button>
+          </div>
+        );
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

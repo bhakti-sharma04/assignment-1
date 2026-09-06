@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  padding: 25px 20px;
+  background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.header h1 {
+  font-size: 26px;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.header p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.calc-card {
+  width: 320px;
+  background-color: #1e293b;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.calc-screen {
+  background-color: #0f172a;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: right;
+  margin-bottom: 16px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.calc-equation {
+  color: #94a3b8;
+  font-size: 14px;
+  min-height: 18px;
+}
+
+.calc-display {
+  color: #f8fafc;
+  font-size: 32px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.calc-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+.btn-num {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.btn-num:hover {
+  background-color: #475569;
+}
+
+.btn-fn {
+  background-color: #475569;
+  color: #38bdf8;
+}
+
+.btn-fn:hover {
+  background-color: #64748b;
+}
+
+.btn-op {
+  background-color: #0284c7;
+  color: white;
+}
+
+.btn-op:hover {
+  background-color: #0369a1;
+}
+
+.btn-equal {
+  grid-column: span 4;
+  background-color: #059669;
+  color: white;
+  margin-top: 4px;
+}
+
+.btn-equal:hover {
+  background-color: #047857;
+}
+
+.history-card {
+  width: 320px;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.history-card h4 {
+  color: #38bdf8;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 5px;
+}
+
+.history-card ul {
+  list-style: none;
+}
+
+.history-card li {
+  font-size: 13px;
+  color: #cbd5e1;
+  padding: 4px 0;
+  border-bottom: 1px dashed #334155;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #64748b;
+  font-size: 13px;
+}

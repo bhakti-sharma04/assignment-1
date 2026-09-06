@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 6 - JavaScript Programs</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; width: 350px; }
+    input { padding: 5px; margin: 5px 0; }
+    button { padding: 5px 10px; cursor: pointer; }
+    .res { margin-top: 5px; color: blue; }
+  </style>
+</head>
+<body>
+
+  <h1>Basic JavaScript Programs</h1>
+
+  <!-- Program 1 -->
+  <div class="box">
+    <h3>1. Positive, Negative or Zero</h3>
+    <input type="number" id="num1" placeholder="Enter number">
+    <br>
+    <button onclick="checkSign()">Check</button>
+    <div class="res" id="ans1"></div>
+  </div>
+
+  <!-- Program 2 -->
+  <div class="box">
+    <h3>2. Odd or Even</h3>
+    <input type="number" id="num2" placeholder="Enter number">
+    <br>
+    <button onclick="checkOddEven()">Check</button>
+    <div class="res" id="ans2"></div>
+  </div>
+
+  <!-- Program 3 -->
+  <div class="box">
+    <h3>3. Largest of Three Numbers</h3>
+    <input type="number" id="a" placeholder="First number"><br>
+    <input type="number" id="b" placeholder="Second number"><br>
+    <input type="number" id="c" placeholder="Third number"><br>
+    <button onclick="findLargest()">Find</button>
+    <div class="res" id="ans3"></div>
+  </div>
+
+  <!-- Program 4 -->
+  <div class="box">
+    <h3>4. Check Prime Number</h3>
+    <input type="number" id="num4" placeholder="Enter number">
+    <br>
+    <button onclick="checkPrime()">Check</button>
+    <div class="res" id="ans4"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

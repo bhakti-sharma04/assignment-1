@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 7 - JS Basic Functions</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .box { border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; width: 350px; }
+    input { padding: 5px; width: 90%; margin: 5px 0; }
+    button { padding: 5px 10px; cursor: pointer; }
+    .res { color: green; margin-top: 5px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Assignment 7 - Basic JavaScript Functions</h2>
+
+  <!-- 1. Decimal to Binary -->
+  <div class="box">
+    <h4>1. Decimal to Binary</h4>
+    <input type="number" id="dec" placeholder="Enter decimal number">
+    <button onclick="toBinary()">Convert</button>
+    <div class="res" id="res1"></div>
+  </div>
+
+  <!-- 2. Count Characters -->
+  <div class="box">
+    <h4>2. Count Character in String</h4>
+    <input type="text" id="str" placeholder="Enter text">
+    <input type="text" id="ch" maxlength="1" placeholder="Enter single letter">
+    <button onclick="countChar()">Count</button>
+    <div class="res" id="res2"></div>
+  </div>
+
+  <!-- 3. Uppercase First Letter -->
+  <div class="box">
+    <h4>3. First Letter to Uppercase</h4>
+    <input type="text" id="text" placeholder="Enter sentence">
+    <button onclick="capitalize()">Capitalize</button>
+    <div class="res" id="res3"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 1 - Basic React App</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Header() {
+      return (
+        <div style={{ background: '#333', color: 'white', padding: '15px', textAlign: 'center' }}>
+          <h2>My Website Header</h2>
+        </div>
+      );
+    }
+
+    function Footer() {
+      return (
+        <div style={{ background: '#333', color: 'white', padding: '10px', textAlign: 'center', marginTop: '30px' }}>
+          <p>My Website Footer - All Rights Reserved</p>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Header />
+          <div style={{ padding: '20px', textAlign: 'center' }}>
+            <h1>Welcome to My First React App</h1>
+            <p>This is Assignment 1. I created a Header and a Footer component.</p>
+          </div>
+          <Footer />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
